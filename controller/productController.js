@@ -18,21 +18,6 @@ exports.createProduct = async (req, res) => {
     }
 }
 
-exports.deleteProduct = async (req, res) => {
-    try {
-        const productId = req.params.productId;
-        const deletedProduct = await Product.findByIdAndDelete(productId);
-
-        if (!deletedProduct) {
-            return res.status(404).json({ error: 'Product not found' });
-        }
-
-        res.json({ message: 'Product deleted successfully' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
-
 exports.fetchProduct = async (req, res) => {
     try {
         const productId = req.params.productId;
@@ -68,4 +53,20 @@ exports.filterProducts = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
+
+exports.deleteProduct = async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        const deletedProduct = await Product.findByIdAndDelete(productId);
+
+        if (!deletedProduct) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        res.json({ message: 'Product deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 
