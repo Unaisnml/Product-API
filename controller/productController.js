@@ -34,21 +34,21 @@ exports.fetchProduct = async (req, res) => {
 exports.filterProducts = async (req, res) => {
     try {
         const { page = 1, pageSize = 10, productName, category } = req.query;
-  const skip = (page - 1) * pageSize;
+        const skip = (page - 1) * pageSize;
 
-  const filter = {};
-  if (productName) {
-    filter.name = new RegExp(productName, 'i'); 
-  }
-  if (category) {
-    filter.category = new RegExp(category, 'i');
-  }
+        const filter = {};
+        if (productName) {
+            filter.name = new RegExp(productName, 'i');
+        }
+        if (category) {
+            filter.category = new RegExp(category, 'i');
+        }
 
-  const products = await Product.find(filter)
-      .skip(skip)
-      .limit(Number(pageSize));
+        const products = await Product.find(filter)
+            .skip(skip)
+            .limit(Number(pageSize));
 
-    res.json(products);
+        res.json(products);
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
