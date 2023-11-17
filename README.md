@@ -7,7 +7,7 @@ APIs for the product management
    git clone https://github.com/Unaisnml/Product-API.git
 
 2. Change to the project directory:
-   cd Product-API
+   cd Product-API,
    cd server
 
 3. Install dependencies:
